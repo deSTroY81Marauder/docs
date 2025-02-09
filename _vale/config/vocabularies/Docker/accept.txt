@@ -3,7 +3,6 @@ Amazon
 Anchore
 Apple
 Artifactory
-Autotest
 Azure
 Btrfs
 BuildKit
@@ -58,7 +57,10 @@ Jamf
 JetBrains
 Kerberos
 Kitematic
+Kubeadm
 Kubernetes
+Laravel
+Laradock
 Linux
 LinuxKit
 Logstash
@@ -95,11 +97,15 @@ VMware
 Wasm
 Windows
 WireMock
+Xdebug
 Zscaler
 Zsh
 [Aa]nonymized?
 [Aa]utobuild
 [Aa]llowlist
+[Aa]utobuilds?
+[Aa]utotests?
+[Bb]uildx
 [Bb]uildpack(s)?
 [Bb]uildx
 [Cc]odenames?
@@ -126,6 +132,7 @@ Zsh
 [Pp]roxied
 [Pp]roxying
 [Rr]eal-time
+[Rr]egex(es)?
 [Rr]untimes?
 [Ss]andbox(ed)?
 [Ss]eccomp
@@ -148,6 +155,7 @@ Zsh
 [Vv]irtiofs
 [Vv]irtualize
 [Ww]alkthrough
+bootup
 cgroup
 config
 containerd
@@ -192,6 +200,7 @@ tmpfs
 ufw
 uid
 umask
+unmanaged
 vSphere
 vpnkit
 windowsfilter

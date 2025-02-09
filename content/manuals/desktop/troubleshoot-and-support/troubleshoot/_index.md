@@ -6,21 +6,25 @@ toc_max: 2
 title: Troubleshoot Docker Desktop
 linkTitle: Troubleshoot and diagnose
 aliases:
-- /desktop/linux/troubleshoot/
-- /desktop/mac/troubleshoot/
-- /desktop/windows/troubleshoot/
-- /docker-for-mac/troubleshoot/
-- /mackit/troubleshoot/
-- /windows/troubleshoot/
-- /docker-for-win/troubleshoot/
-- /docker-for-windows/troubleshoot/
-- /desktop/troubleshoot/overview/
-- /desktop/troubleshoot/
+ - /desktop/linux/troubleshoot/
+ - /desktop/mac/troubleshoot/
+ - /desktop/windows/troubleshoot/
+ - /docker-for-mac/troubleshoot/
+ - /mackit/troubleshoot/
+ - /windows/troubleshoot/
+ - /docker-for-win/troubleshoot/
+ - /docker-for-windows/troubleshoot/
+ - /desktop/troubleshoot/overview/
+ - /desktop/troubleshoot/
 tags: [ Troubleshooting ]
 weight: 10
 ---
 
 This page contains information on how to diagnose and troubleshoot Docker Desktop, and how to check the logs.
+
+> [!WARNING]
+>
+> If you're experiencing malware detection issues on Mac, follow the steps documented in [docker/for-mac#7527](https://github.com/docker/for-mac/issues/7527).
 
 ## Troubleshoot menu
 

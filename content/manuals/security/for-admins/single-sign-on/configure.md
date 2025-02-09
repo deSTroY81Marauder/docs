@@ -1,6 +1,6 @@
 ---
 description: Learn how to configure single sign-on for your organization or company.
-keywords: configure, sso, docker hub, hub, docker admin, admin, security 
+keywords: configure, sso, docker hub, hub, docker admin, admin, security
 title: Configure single sign-on
 linkTitle: Configure
 aliases:
@@ -12,14 +12,16 @@ aliases:
 - /admin/organization/security-settings/sso-configuration/
 ---
 
+{{< summary-bar feature_name="SSO" >}}
+
 Get started creating a single sign-on (SSO) connection for your organization or company. This guide walks through the steps to add and verify the domains your members use to sign in to Docker.
 
 ## Step one: Add your domain
 
+{{< summary-bar feature_name="Admin console early access" >}}
+
 {{< tabs >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 1. Sign in to the [Admin Console](https://admin.docker.com/).
 2. Select your organization or company from the **Choose profile** page. Note that when an organization is part of a company, you must select the company and configure the domain for the organization at the company level.
@@ -43,12 +45,12 @@ Get started creating a single sign-on (SSO) connection for your organization or 
 
 ## Step two: Verify your domain
 
+{{< summary-bar feature_name="Admin console early access" >}}
+
 Verifying your domain ensures Docker knows you own it. Domain verification is done by adding your Docker TXT Record Value to your domain host. The TXT Record Value proves ownership, which signals the Domain Name System (DNS) to add this record. It can take up to 72 hours for DNS to recognize the change. When the change is reflected in DNS, Docker will automatically check the record to confirm your ownership.
 
 {{< tabs >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 1. Navigate to your domain host, create a new TXT record, and paste the **TXT Record Value** from Docker.
 2. TXT record verification can take 72 hours. Once you have waited for TXT record verification, return to the **Domain management** page of the Admin Console and select **Verify** next to your domain name.

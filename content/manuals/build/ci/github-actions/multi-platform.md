@@ -179,15 +179,15 @@ jobs:
 
       - name: Export digest
         run: |
-          mkdir -p /tmp/digests
+          mkdir -p ${{ runner.temp }}/digests
           digest="${{ steps.build.outputs.digest }}"
-          touch "/tmp/digests/${digest#sha256:}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
           name: digests-${{ env.PLATFORM_PAIR }}
-          path: /tmp/digests/*
+          path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
 
@@ -199,7 +199,7 @@ jobs:
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
-          path: /tmp/digests
+          path: ${{ runner.temp }}/digests
           pattern: digests-*
           merge-multiple: true
 
@@ -233,7 +233,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
 
       - name: Create manifest list and push
-        working-directory: /tmp/digests
+        working-directory: ${{ runner.temp }}/digests
         run: |
           docker buildx imagetools create $(jq -cr '.tags | map("-t " + .) | join(" ")' <<< "$DOCKER_METADATA_OUTPUT_JSON") \
             $(printf '${{ env.DOCKERHUB_REPO }}@sha256:%s ' *)
@@ -326,13 +326,13 @@ jobs:
 
       - name: Rename meta bake definition file
         run: |
-          mv "${{ steps.meta.outputs.bake-file }}" "/tmp/bake-meta.json"
+          mv "${{ steps.meta.outputs.bake-file }}" "${{ runner.temp }}/bake-meta.json"
 
       - name: Upload meta bake definition
         uses: actions/upload-artifact@v4
         with:
           name: bake-meta
-          path: /tmp/bake-meta.json
+          path: ${{ runner.temp }}/bake-meta.json
           if-no-files-found: error
           retention-days: 1
 
@@ -350,14 +350,11 @@ jobs:
           platform=${{ matrix.platform }}
           echo "PLATFORM_PAIR=${platform//\//-}" >> $GITHUB_ENV
 
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Download meta bake definition
         uses: actions/download-artifact@v4
         with:
           name: bake-meta
-          path: /tmp
+          path: ${{ runner.temp }}
       
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -373,11 +370,11 @@ jobs:
 
       - name: Build
         id: bake
-        uses: docker/bake-action@v5
+        uses: docker/bake-action@v6
         with:
           files: |
             ./docker-bake.hcl
-            /tmp/bake-meta.json
+            cwd://${{ runner.temp }}/bake-meta.json
           targets: image
           set: |
             *.tags=
@@ -386,15 +383,15 @@ jobs:
 
       - name: Export digest
         run: |
-          mkdir -p /tmp/digests
+          mkdir -p ${{ runner.temp }}/digests
           digest="${{ fromJSON(steps.bake.outputs.metadata).image['containerimage.digest'] }}"
-          touch "/tmp/digests/${digest#sha256:}"
+          touch "${{ runner.temp }}/digests/${digest#sha256:}"
 
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
           name: digests-${{ env.PLATFORM_PAIR }}
-          path: /tmp/digests/*
+          path: ${{ runner.temp }}/digests/*
           if-no-files-found: error
           retention-days: 1
 
@@ -407,12 +404,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: bake-meta
-          path: /tmp
+          path: ${{ runner.temp }}
 
       - name: Download digests
         uses: actions/download-artifact@v4
         with:
-          path: /tmp/digests
+          path: ${{ runner.temp }}/digests
           pattern: digests-*
           merge-multiple: true
 
@@ -426,12 +423,12 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Create manifest list and push
-        working-directory: /tmp/digests
+        working-directory: ${{ runner.temp }}/digests
         run: |
-          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("${{ env.REGISTRY_IMAGE }}")) | "-t " + .) | join(" ")' /tmp/bake-meta.json) \
+          docker buildx imagetools create $(jq -cr '.target."docker-metadata-action".tags | map(select(startswith("${{ env.REGISTRY_IMAGE }}")) | "-t " + .) | join(" ")' ${{ runner.temp }}/bake-meta.json) \
             $(printf '${{ env.REGISTRY_IMAGE }}@sha256:%s ' *)
 
       - name: Inspect image
         run: |
-          docker buildx imagetools inspect ${{ env.REGISTRY_IMAGE }}:$(jq -r '.target."docker-metadata-action".args.DOCKER_META_VERSION' /tmp/bake-meta.json)
+          docker buildx imagetools inspect ${{ env.REGISTRY_IMAGE }}:$(jq -r '.target."docker-metadata-action".args.DOCKER_META_VERSION' ${{ runner.temp }}/bake-meta.json)
 ```

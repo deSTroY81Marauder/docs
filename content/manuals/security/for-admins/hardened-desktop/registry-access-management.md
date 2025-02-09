@@ -1,7 +1,8 @@
 ---
-description: Registry Access Management
-keywords: registry, access, management, permissions, Docker Business feature
+description: Control access to approved registries with Registry Access Management, ensuring secure Docker Desktop usage
+keywords: registry, access, management, permissions, Docker Business feature, security, admin
 title: Registry Access Management
+tags: [admin]
 aliases:
  - /desktop/hardened-desktop/registry-access-management/
  - /admin/organization/registry-access/
@@ -10,9 +11,7 @@ aliases:
 weight: 30
 ---
 
-> [!NOTE]
->
-> Registry Access Management is available to [Docker Business](/manuals/subscription/details.md) customers only.
+{{< summary-bar feature_name="Registry access management" >}}
 
 With Registry Access Management (RAM), administrators can ensure that their developers using Docker Desktop only access allowed registries. This is done through the Registry Access Management dashboard in Docker Hub or the Docker Admin Console.
 
@@ -39,6 +38,8 @@ feature always takes effect.
 
 ## Configure Registry Access Management permissions
 
+{{< summary-bar feature_name="Admin console early access" >}}
+
 {{< tabs >}}
 {{< tab name="Docker Hub" >}}
 
@@ -46,8 +47,6 @@ feature always takes effect.
 
 {{< /tab >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 {{% admin-registry-access product="admin" %}}
 

@@ -9,6 +9,7 @@ aliases:
 - /docker-for-mac/faqs/
 - /docker-for-windows/faqs/
 - /desktop/faqs/
+- /desktop/faqs/general/
 weight: 10
 ---
 
@@ -31,6 +32,7 @@ This includes:
 - Checking for updates
 - [In-app diagnostics](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md#diagnose-from-the-app) (including the [Self-diagnose tool](/manuals/desktop/troubleshoot-and-support/troubleshoot/_index.md#diagnose-from-the-app))
 - Sending usage statistics
+- When `networkMode` is set to `mirrored`
 
 ### How do I connect to the remote Docker Engine API?
 
@@ -82,7 +84,7 @@ You can then sign in to your machine with the user ID specified, and launch Dock
 
 > [!NOTE]
 > 
-> Before launching Docker Desktop, if a `settings.json` file already exists in the `~/Library/Group Containers/group.com.docker/` directory, you will see a **Finish setting up Docker Desktop** window that prompts for administrator privileges when you select **Finish**. To avoid this, ensure you delete the `settings.json` file left behind from any previous installations before launching the application.
+> Before launching Docker Desktop, if a `settings-store.json` file (or `settings.json` for Docker Desktop versions 4.34 and earlier) already exists in the `~/Library/Group Containers/group.com.docker/` directory, you will see a **Finish setting up Docker Desktop** window that prompts for administrator privileges when you select **Finish**. To avoid this, ensure you delete the `settings-store.json` file (or `settings.json` for Docker Desktop versions 4.34 and earlier) left behind from any previous installations before launching the application.
 
 {{< /tab >}}
 {{< tab name="Windows" >}}

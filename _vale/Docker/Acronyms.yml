@@ -41,6 +41,7 @@ exceptions:
   - ECI
   - ELK
   - FAQ
+  - FPM
   - FUSE
   - GB
   - GCC
@@ -65,15 +66,19 @@ exceptions:
   - IP
   - IPAM
   - IPC
+  - IT
   - JAR
+  - JIT
   - JSON
   - JSX
   - LESS
   - LLDB
   - LTS
   - MAC
+  - MCP
   - MDM
   - MDN
+  - MSI
   - NAT
   - NET
   - NFS
@@ -93,6 +98,7 @@ exceptions:
   - PHP
   - POSIX
   - POST
+  - QA
   - QEMU
   - RAM
   - REPL

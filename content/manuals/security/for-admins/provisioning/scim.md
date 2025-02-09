@@ -9,6 +9,8 @@ aliases:
 weight: 30
 ---
 
+{{< summary-bar feature_name="SSO" >}}
+
 System for Cross-domain Identity Management (SCIM) is available for Docker Business customers. This guide provides an overview of SCIM provisioning.
 
 ## How SCIM works
@@ -46,12 +48,12 @@ For additional details about supported attributes and SCIM, see [Docker Hub API 
 
 ## Enable SCIM in Docker
 
+{{< summary-bar feature_name="Admin console early access" >}}
+
 You must [configure SSO](../single-sign-on/configure/_index.md) before you enable SCIM. Enforcing SSO isn't required to use SCIM.
 
 {{< tabs >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 {{% admin-scim product="admin" %}}
 
@@ -238,12 +240,12 @@ See the documentation for your IdP for additional details:
 
 ## Disable SCIM
 
+{{< summary-bar feature_name="Admin console early access" >}}
+
 If SCIM is disabled, any user provisioned through SCIM will remain in the organization. Future changes for your users will not sync from your IdP. User de-provisioning is only possible when manually removing the user from the organization.
 
 {{< tabs >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 {{% admin-scim-disable product="admin" %}}
 

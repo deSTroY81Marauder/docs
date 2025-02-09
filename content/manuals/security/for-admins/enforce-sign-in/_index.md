@@ -1,14 +1,17 @@
 ---
 description: Understand what happens when you force users to sign in to Docker Desktop
 toc_max: 2
-keywords: authentication, registry.json, configure, enforce sign-in, docker desktop, security,
+keywords: authentication, registry.json, configure, enforce sign-in, docker desktop, security, .plist, registry key, mac, windows
 title: Enforce sign-in for Docker Desktop
 linkTitle: Enforce sign-in
+tags: [admin]
 aliases:
  - /security/for-admins/configure-sign-in/
  - /docker-hub/configure-sign-in/
 weight: 30
 ---
+
+{{< summary-bar feature_name="Enforce sign-in" >}}
 
 By default, members of your organization can use Docker Desktop without signing
 in. When users don’t sign in as a member of your organization, they don’t
@@ -24,8 +27,7 @@ There are multiple methods for enforcing sign-in, depending on your companies' s
 
 ## How is sign-in enforced?
 
-When Docker Desktop starts and it detects a registry key, `.plist` file, or `registry.json` file, the
-following occurs:
+When Docker Desktop starts and it detects a registry key, `.plist` file, or `registry.json` file, the following occurs:
 
 - A **Sign in required!** prompt appears requiring the user to sign
   in as a member of your organization to use Docker Desktop. ![Enforce Sign-in
@@ -38,10 +40,13 @@ following occurs:
 - When a user signs out, the **Sign in required!** prompt appears and they can
   no longer use Docker Desktop.
 
+> [!NOTE]
+>
+> Enforcing sign-in for Docker Desktop does not impact accessing the Docker CLI. CLI access is only impacted for organizations that enforce single sign-on.
+
 ## Enforcing sign-in versus enforcing single sign-on (SSO)
 
-[Enforcing SSO](/manuals/security/for-admins/single-sign-on/connect.md) and
-enforcing sign-in are different features. The following table provides a
+[Enforcing SSO](/manuals/security/for-admins/single-sign-on/connect.md#optional-enforce-sso) and enforcing sign-in are different features. The following table provides a
 description and benefits when using each feature.
 
 | Enforcement                       | Description                                                     | Benefits                                                                                                                                                                                                                                                   |

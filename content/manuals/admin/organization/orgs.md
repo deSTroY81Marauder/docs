@@ -8,12 +8,16 @@ aliases:
 - /docker-hub/orgs/
 ---
 
+{{< summary-bar feature_name="Admin orgs" >}}
+
 This section describes how to create an organization. Before you begin:
 
 - You need a [Docker ID](/accounts/create-account/)
 - Review the [Docker subscriptions and features](../../subscription/details.md) to determine what plan to choose for your organization
 
 ## Create an organization
+
+{{< summary-bar feature_name="Admin console early access" >}}
 
 There are multiple ways to create an organization. You can either:
 - Create a new organization using the **Create Organization** option in Docker Hub
@@ -51,8 +55,6 @@ You've now created an organization.
 {{< /tab >}}
 {{< tab name="Admin Console" >}}
 
-{{< include "admin-early-access.md" >}}
-
 To create an organization:
 
 1. Sign in to [Docker Home](https://app.docker.com/).
@@ -82,6 +84,8 @@ You've now created an organization.
 {{< /tabs >}}
 
 ## View an organization
+
+{{< summary-bar feature_name="Admin console early access" >}}
 
 {{< tabs >}}
 {{< tab name="Docker Hub" >}}
@@ -135,8 +139,6 @@ configure your organization.
 
 {{< /tab >}}
 {{< tab name="Admin Console" >}}
-
-{{< include "admin-early-access.md" >}}
 
 To view an organization in the Admin Console:
 

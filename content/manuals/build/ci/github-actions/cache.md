@@ -84,11 +84,7 @@ jobs:
 
 ### Cache backend API
 
-{{% experimental %}}
-This cache exporter is experimental. Please provide feedback on the
-[BuildKit repository](https://github.com/moby/buildkit)
-if you experience any issues.
-{{% /experimental %}}
+{{< summary-bar feature_name="Cache backend API" >}}
 
 The [GitHub Actions cache exporter](../../cache/backends/gha.md)
 backend uses the [GitHub Cache API](https://github.com/tonistiigi/go-actions-cache/blob/master/api.md)
@@ -248,7 +244,7 @@ jobs:
       - name: Cache Docker layers
         uses: actions/cache@v4
         with:
-          path: /tmp/.buildx-cache
+          path: ${{ runner.temp }}/.buildx-cache
           key: ${{ runner.os }}-buildx-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-buildx-
@@ -258,14 +254,14 @@ jobs:
         with:
           push: true
           tags: user/app:latest
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
+          cache-from: type=local,src=${{ runner.temp }}/.buildx-cache
+          cache-to: type=local,dest=${{ runner.temp }}/.buildx-cache-new,mode=max
 
       - # Temp fix
         # https://github.com/docker/build-push-action/issues/252
         # https://github.com/moby/buildkit/issues/1896
         name: Move cache
         run: |
-          rm -rf /tmp/.buildx-cache
-          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
+          rm -rf ${{ runner.temp }}/.buildx-cache
+          mv ${{ runner.temp }}/.buildx-cache-new ${{ runner.temp }}/.buildx-cache
 ```

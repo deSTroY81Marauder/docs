@@ -6,6 +6,8 @@ aliases:
 - /docker-hub/deactivate-account/
 ---
 
+{{< summary-bar feature_name="General admin" >}}
+
 You can deactivate an account at any time. This section describes the prerequisites and steps to deactivate an organization account. For information on deactivating a user account, see [Deactivate a user account](../accounts/deactivate-user-account.md).
 
 > [!WARNING]
@@ -28,6 +30,8 @@ Before deactivating an organization, complete the following:
 - For Business organizations, [remove your SSO connection](../security/for-admins/single-sign-on/manage/#remove-an-organization).
 
 ## Deactivate
+
+{{< summary-bar feature_name="Admin console early access" >}}
 
 Once you have completed all the previous steps, you can deactivate your organization.
 

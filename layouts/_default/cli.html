@@ -17,7 +17,7 @@
           {{ with $data.short }}
           <tr>
             <th class="text-left w-32">Description</th>
-            <td>{{ . }}</th>
+            <td>{{ . }}</td>
           </tr>
           {{ end }}
           {{ with $data.usage }}
@@ -183,11 +183,13 @@ can be removed entirely in a future release.
         </thead>
         <tbody>
           {{ range .Pages }}
-            <tr>
-              <td class="text-left"><a class="link" href="{{ .Permalink }}"><code>{{ .Title }}</code></a></th>
-              {{ $data := index (index site.Data .Params.datafolder) .Params.datafile }}
-              <td class="text-left">{{ $data.short }}</th>
-            </tr>
+            {{- if and .Params.datafolder .Params.datafile }}
+              <tr>
+                <td class="text-left"><a class="link" href="{{ .Permalink }}"><code>{{ .Title }}</code></a></th>
+                {{ $data := index (index site.Data .Params.datafolder) .Params.datafile }}
+                <td class="text-left">{{ $data.short }}</th>
+              </tr>
+            {{- end }}
           {{ end }}
         </tbody>
       </table>
