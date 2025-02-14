@@ -21,7 +21,7 @@
     "@material-symbols/svg-400": "^0.23.0",
     "@tailwindcss/nesting": "^0.0.0-insiders.565cd3e",
     "@tailwindcss/typography": "^0.5.15",
-    "alpinejs": "^3.14.3",
+    "alpinejs": "^3.14.8",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
